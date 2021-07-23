@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<header id="banner" class="body">
+	<h1><a href="/"> Conecte-se <strong> Conecte-se com instituições e ajude quem precisa. </strong></a></h1>
+
+  <nav><ul>
+    <li><a href="logout">Logout</a></li>
+  </ul></nav>
+
+</header><!-- /#banner -->
+
+{% endblock %}
+
+{% block body %}
+
+<div class="body">
+
+		<ul>
+        	
+		<div class="content">
+		    <h1 style="text-align: center">Portal da Instituição</h1>
+		    
+		    {% if meus_pedidos|length < 1 %}
+		    	{{ meus_pedidos|length }}
+			    <h4 style="text-align: center">Não há pedidos realizados.</h4>
+			{% else %}
+			    <table>
+			        <tr>
+			            <th>Item</th>
+						<th>Quantidade</th>
+						<th>Unidade</th>
+						<th>Data de criação</th>
+						<th>Ações</th>
+			        </tr>
+			        {% for pedido in meus_pedidos %}
+			            <tr>
+			                <td>{{ pedido.item }}</td>
+			                <td>{{ pedido.quantidade }}</td>
+			                <td>{{ pedido.unidade }}</td>
+			                <td>{{ pedido.data.date() }}</td>
+			                <td>
+			                    <a href="/apagar_pedido/{{pedido.id}}">Apagar pedido</a>
+			                    <br>
+			                    <a href="/atualizar_pedido/{{pedido.id}}">Atualizar pedido</a>
+			                </td>
+			            </tr>
+			        {% endfor %}
+			    </table>
+		    {% endif %}
+
+		    <div class="form">
+		        <form action="/publicar_pedido" method="post">
+					<input type="text" name="item" id="item" placeholder="nome do item">
+					<input type="number" name="quantidade" id="quantidade" placeholder="quantidade (deve ser um número inteiro)">
+					<input type="text" name="unidade" id="unidade" placeholder="unidade (ex: litros, quilos, unidades)">
+					<input type="submit"  value="Adicionar pedido">
+				</form>
+		    </div>
+		</div>
+		<a href="logout"><b>Logout</b></a>
+
+	</ul>
+</div>
+
+
+{% endblock %}
+
+
+{% block footer %}
+
+
+
+ {% endblock %}

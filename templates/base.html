@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Conecte-se</title>
+   
+    {% block head %}{% endblock %}
+
+</head>
+
+<body>  
+
+    <script
+            type="text/javascript"
+            src="{{ url_for('static', filename='index.js') }}"
+    ></script>
+
+    {% block body %}{% endblock %}
+
+</body>
+
+<footer id="contentinfo" class="body">
+   
+     {% block footer %} {% endblock %}  
+
+</footer><!-- /#contentinfo -->
+
+</html>

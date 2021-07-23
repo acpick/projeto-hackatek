@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<header id="banner" class="body">
+	<h1><a href="/"> Conecte-se <strong> Conecte-se com instituições e ajude quem precisa. </strong></a></h1>
+
+  <nav><ul>
+    <li><a href="logout">Logout</a></li>
+  </ul></nav>
+
+</header><!-- /#banner -->
+
+{% endblock %}
+
+{% block body %}
+
+<div class="body">
+
+		<center><h1><b>Pedidos</b></h1></center>
+
+		<b>Veja os pedidos das instituições cadastradas e faça a sua doação!</b>
+
+		<form  method="POST">
+    		<table class="table table-dark">
+		        <thead>
+		            <tr>
+		                <th scope="col"># Item solicitado</th>
+		                <th scope="col"># Quantidade faltante</th>
+		                <th scope="col"># Instituição</th>
+		                <th scope="col"># Telefone</th>
+		                <th scope="col"># Quantidade para doação</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        		
+		                {% for item in itens %}
+		                <tr>
+		                    <th scope="row">{{item.item}} </th>
+		                    <th scope="row">{{item.faltando}} </th>
+		                    <th scope="row">{{item.instituicao}} </th>
+		                   <th scope="row">{{item.phone}} </th> 
+
+		                    <th>
+		                        <input
+		                            type="number"
+		                            min="0"
+		                            oninput="validity.valid||(value='');"
+		                            class="form-control"
+		                            id="{{item.id}}"
+		                            name="doacao"
+		                            placeholder="Insira um valor">
+		                        
+		                        <button  type="button" {% if item.faltando <= 0 %}disabled{% endif %} class="btn btn-outline-light" aria-label="Close" onClick="doarItem({{item.id}},{{ item.faltando }})">Doar</button>
+		                    </th>
+
+		                </tr>
+		                {% endfor %}
+		        </tbody>
+		    </table>
+		</form>
+
+		<center><a href="logout"><b>Logout</b></a></center>
+
+</div>
+
+{% endblock %}
+
+	{% block footer %}
+
+
+
+ {% endblock %}

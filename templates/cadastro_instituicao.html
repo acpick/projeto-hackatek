@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<header id="banner" class="body">
+	<h1><a href="/"> Conecte-se <strong> Conecte-se com instituições e ajude quem precisa. </strong></a></h1>
+
+  <nav><ul>
+    <li class="home"><a href="/">Home</a></li>
+    <li><a href="cadastro_doador"> Seja um doador.</a></li>
+
+    <li><a href="cadastro_instituicao">Cadastre a sua instituição</a></li>
+    <li><a href="login">Já faz parte? Faça login!</a></li>
+  </ul></nav>
+
+</header><!-- /#banner -->
+
+{% endblock %}
+
+
+{% block body %}
+
+	<form action="/cadastro_instituicao" method="post" class="body">
+		<div class="form-group">
+			<input type="text" name="name" id="nome_instituicao" placeholder="Insira o nome da instituição." size="115"/>
+		</div>
+		<div class="form-group">
+			<input type="text" name="adress" id="endereco_instituicao" placeholder="Insira o endereço da instituição." size="115"/>
+		</div>
+		<div class="form-group">
+			<input type="tex" name="cnpj" id="cnpj_instituicao" placeholder="Insira o CNPJ da instituição. Ex: XX. XXX. XXX/0001-XX" size="115"/>
+		</div>
+		<div class="form-group">
+			<input type="text" name="phone" id="telefone_instituicao" placeholder="Insira um telefone para contato. Ex: (XX) XXXXX-XXXXX" size="115"/>
+		</div>
+		<div class="form-group">
+			<input type="email" name="email" id="email_instituicao" placeholder="Insira o email da instituição" size="115"/>
+		</div>
+		<div class="form-group">
+			<input type="password" name="password1" id="senha_instituicao" placeholder="Crie sua senha." size="115"/>
+		</div>
+		<div class="form-group">
+			<input type="password" name="password2" id="senha_conf_instituicao" placeholder="Confirme sua senha." size="115"/>
+		</div>
+		<div class="form-group">
+			<input type="submit" value="Fazer cadastro." size="115"/>
+		</div>
+	</form>
+
+{% endblock %}
+
+{% block footer %}
+
+<nav><ul>
+    <li class="home"><a href="home">Home</a></li>
+    <li><a href="cadastro_doador"> Seja um doador.</a></li>
+
+    <li><a href="cadastro_doador">Cadastre a sua instituição</a></li>
+    <li><a href="login">Já faz parte? Faça login!</a></li>
+ </ul></nav>
+
+ {% endblock %}
+
